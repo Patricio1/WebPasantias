@@ -1,0 +1,4 @@
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\bin\WebSistemaPasantias.dll
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\bin\WebSistemaPasantias.pdb
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\obj\Debug\WebSistemaPasantias.dll
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\obj\Debug\WebSistemaPasantias.pdb

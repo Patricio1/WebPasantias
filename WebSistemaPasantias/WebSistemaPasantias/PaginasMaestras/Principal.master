@@ -1,0 +1,113 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Principal.master.cs" Inherits="Principal" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="../App_Themes/Tema1/TemaFondo.css" rel="stylesheet" type="text/css" />
+    <link href="../App_Themes/Tema1/Estilo1.css" rel="stylesheet" type="text/css" />
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+  
+  
+ 
+  
+
+
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 20%;
+      margin: auto;
+  }
+      .horizontal-separator
+      {
+          text-align: center;
+      }
+  </style>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+<div id=menu>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Sitio de Prueba</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/WebSistemaPasantias/Inicio.aspx">Inicio</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/WebSistemaPasantias/Login/Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+
+    <form id="form1" runat="server">
+    <div>
+      
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+     <%--    <div id= "bajo" >
+             <div id= "columnIzq" >
+            <asp:ContentPlaceHolder id="MenuContextual" runat="server">
+        <h2>HOLA</h2>
+        </asp:ContentPlaceHolder>
+        </div>
+
+
+         <div id= "columnCentro" >
+            <asp:ContentPlaceHolder id="ContenidoPrincipal" runat="server">
+                <h2>HOLA MUNDO</h2>
+               
+        </asp:ContentPlaceHolder>
+        </div>
+
+         <div id= "columnDer" >
+             <div id= "publicidad" align="center">
+                 <h2>Integrantes:
+                    </h2>
+                 <h4>Duran Danilo <br /> 
+                 Landa Patricio<br /> 
+                 Lopez Jaime<br /> 
+                 Quinaluiza Alexander
+                 </h4>
+             </div>
+
+             <div id="redesSociales" align="center">
+                
+
+             </div>
+             
+            
+        </div>
+         <div id= "pie" >
+             <span>  FISEI</span></div>
+        </div>--%>
+
+        
+    </div>
+    </form>
+</body>
+</html>

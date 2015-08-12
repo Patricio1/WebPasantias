@@ -1,0 +1,67 @@
+﻿ #menu
+ {
+      height:51px;
+     
+    
+    position:relative;  
+    z-index:2;
+ }
+ 
+ #menuContextual li
+  {
+      
+    padding:10px;
+    background-color:Navy;
+    color:White;
+    border:1px outset Blue;
+    
+  }
+     #menuContextual li >a
+  {
+       display:block;
+    color:White;
+    text-decoration:none;
+    font-weight:bold;
+  }
+
+#bajo 
+{
+    width:1200px;
+    background-color:Silver;
+    margin:auto;
+    overflow:auto;
+    
+}
+#columnIzq , columnDer 
+{
+    float:left;
+    width:20%;
+    min-height:500px;
+}  
+#columnCentro
+{
+    float:left;
+    width:60%;
+    min-height:500px;
+    background-color:White;
+}
+#publicida , redesSociales 
+{ 
+  width:80%;
+  margin:20xp auto;
+  border:1xp dashed Silver;
+  padding:5xp;
+  
+    
+    }
+    
+    
+#pie
+{
+    height: 30px;
+    background-color: #990000;
+    clear: both;
+    color: White;
+    text-align: center;
+    padding-top: 5px;
+}

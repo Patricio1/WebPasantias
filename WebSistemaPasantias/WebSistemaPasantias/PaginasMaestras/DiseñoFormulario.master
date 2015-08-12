@@ -1,0 +1,55 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/PaginasMaestras/Principal.master" AutoEventWireup="false" CodeFile="DiseñoFormulario.master.vb" Inherits="PaginasMaestras_DiseñoFormulario" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <link href="../App_Themes/Tema1/Estilo1.css" rel="stylesheet" type="text/css" /> 
+      <%-- <form id="form1" runat="server">--%>
+    
+      <div>
+      
+
+         <div id= "bajo" >
+             <div id= "columnIzq" >
+            <asp:ContentPlaceHolder id="MenuContextual" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        </div>
+
+
+         <div id= "columnCentro" >
+            <asp:ContentPlaceHolder id="ContenidoPrincipal" runat="server">
+               
+               
+        </asp:ContentPlaceHolder>
+        </div>
+
+         <div id= "columnDer" >
+             <div id= "publicidad" align="center">
+                 <h2>Integrantes:
+                    </h2>
+                 <h4>Duran Danilo <br /> 
+                 Landa Patricio<br /> 
+                 Lopez Jaime<br /> 
+                 Quinaluiza Alexander
+                 </h4>
+             </div>
+
+             <div id="redesSociales" align="center">
+                
+
+             </div>
+             
+            
+        </div>
+         <div id= "pie" >
+             <span>  FISEI</span></div>
+        </div>
+
+        
+    </div>
+
+  <%--  </form>--%>
+</asp:Content>
+
