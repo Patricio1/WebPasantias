@@ -14,8 +14,11 @@ public partial class PaginasMaestras_Default : System.Web.UI.Page
     {
         AlumnoDAL alumnosDAL = new AlumnoDAL();
 
-        //PRIMERA version del metodo: Select.
-        dgvDatos.DataSource = alumnosDAL.SelectPorPrimaryKey("1804600912", "p_select_alumnos_por_primarykey");
+        //PRIMERA version del metodo: Select.  p_select_alumnos
+        //dgvDatos.DataSource = alumnosDAL.SelectPorPrimaryKey("1804600912", "p_select_alumnos_por_primarykey");
+
+        DetailsView1.DataSource = alumnosDAL.Select("p_select_alumnos");
+        DetailsView1.DataBind();
 
         ////SEGUNDA version del método: Select. 
         //dgvDatos.DataSource = customersDAL.Select("p_select_customers");

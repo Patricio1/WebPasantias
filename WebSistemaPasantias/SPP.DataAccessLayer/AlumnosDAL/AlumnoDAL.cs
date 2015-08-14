@@ -40,6 +40,8 @@ namespace SPP.DataAccessLayer.AlumnoDAL
         }
 
 
+
+
         /// <summary>
         /// Recupera un registro de la tabla "Alumno" según la clave primaria
         /// "CED_ALU" especificada, utilizando un "procedimiento almacenado".

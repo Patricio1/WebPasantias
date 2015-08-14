@@ -7,8 +7,10 @@
     <br />
 </p>
 <p>
-    <asp:GridView ID="dgvDatos" runat="server">
-    </asp:GridView>
+    &nbsp;</p>
+<p>
+    <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px">
+    </asp:DetailsView>
 </p>
 <p>
     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
