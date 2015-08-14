@@ -156,54 +156,32 @@ namespace SPP.DataAccessLayer.AlumnoDAL
         /// <param name="CED_ALU">Clave primaria del registro a eliminar</param>
         /// <param name="storedProcedure">Nombre del stored procedure</param>
         /// <returns>true si se elimina, false caso contrario</returns>
-        public bool Delete(int CedulaAlumno, string storedProcedure)
+        public int Delete(Alumno alumno)
         {
-            //Instanciar un "Connection".
-            SqlConnection conexion = new SqlConnection();
+            DatabaseHelper db = new DatabaseHelper();
 
-            try
-            {
-                //Crear y configurar el "Connection".
-                conexion.ConnectionString = ConectarBaseDatos.CadenaConexion;
+            //Preparar la sentencia "INSERT".
+            string sentenciaDelete = "DELETE alumnos WHERE CED_ALU=@CED_ALU";
 
-                //Instanciar un "Command".
-                SqlCommand comandoDelete = new SqlCommand(storedProcedure, conexion);
-                comandoDelete.CommandType = CommandType.StoredProcedure;//Ejecutar un stored procedure.
+            //Como el comando SQL tiene parametros, crear y agregar los parámetros a la 
+            //propiedad "Parameters" del "Command".   
+            db.AddParameter("@CED_ALU", alumno.Cedula);
+         
+          
+            //Utilizar la PRIMERA version del método: ExecuteNonQuery().
+            int resul = db.ExecuteNonQuery(sentenciaDelete);
 
-                //Como el "Stored Procedure" tiene un parametro, crear y agregar el parámetro a la 
-                //propiedad "Parameters" del "Command".                
-                comandoDelete.Parameters.Add("@CED_ALU", SqlDbType.VarChar, 10).Value = CedulaAlumno;
+            //Preparar la sentencia SELECT para recuperar el último "AUTONUMERICO" que
+            //genero al base de datos al ejecutar la sentencia  "INSERT" anterior.
+            //string sentenciaSelect = "SELECT IDENT_CURRENT('Customers') " +
+            //                         "FROM Customers";
+
+            ////Ejecutar el comando y recuperar el código generado por la base de datos.
+            ////Utilizar la PRIMERA version del método: ExecuteScalar().
+            //int customerID = Convert.ToInt32(db.ExecuteScalar(sentenciaSelect));
 
 
-                //Abrir la conexion.
-                conexion.Open();
-
-                //Ejecutar el comando, y retornar el numero de registros afectados
-                //por el comando DELETE.
-                int cantidadRegistrosAfectados = comandoDelete.ExecuteNonQuery();
-
-                if (cantidadRegistrosAfectados > 0)
-                    return true;//Se elimino el registro.
-                else
-                    return false;//No se puedo eliminar el registro.
-            }
-            catch (SqlException excepcion)
-            {
-                //Lanzar la excepcion.
-                throw excepcion;
-            }
-            catch (Exception excepcion)
-            {
-                //Lanzar la excepcion.
-                throw excepcion;
-            }
-            finally
-            {
-                //Cerrar la conexion.
-                conexion.Close();
-                //Liberar memoria.
-                conexion.Dispose();
-            }
+            return resul;
         }
 
 
@@ -213,64 +191,43 @@ namespace SPP.DataAccessLayer.AlumnoDAL
         /// <param name="alumnos">Objeto de negocio para pasar datos</param>
         /// <param name="storedProcedure">Nombre del stored procedure</param>
         /// <returns>true si se actualiza, false caso contrario</returns>
-        public bool Update(Alumno alumno, string storedProcedure)
+        public int Update(Alumno alumno)
         {
-            //Instanciar un "Connection".
-            SqlConnection conexion = new SqlConnection();
+            DatabaseHelper db = new DatabaseHelper();
 
-            try
-            {
-                //Crear y configurar el "Connection".
-                conexion.ConnectionString = ConectarBaseDatos.CadenaConexion;
+            //Preparar la sentencia "INSERT".
+            string sentenciaUpdate = "UPDATE alumnos SET ID_CAR=@ID_CAR,NOM_ALU_1=@NOM_ALU_1,NOM_ALU_2=@NOM_ALU_2,"+
+                "APE_ALU_1=@APE_ALU_1,APE_ALU_2=@APE_ALU_2,TEL_ALU=@TEL_ALU,EMAIL_ALU=@EMAIL_ALU,CEL_ALU=@CEL_ALU,"+
+                "CRED_APROB=@CRED_APROB,GENERO=@GENERO WHERE CED_ALU=@CED_ALU";
 
+            //Como el comando SQL tiene parametros, crear y agregar los parámetros a la 
+            //propiedad "Parameters" del "Command".   
+            db.AddParameter("@CED_ALU", alumno.Cedula);
+            db.AddParameter("@ID_CAR", alumno.IdCar);
+            db.AddParameter("@NOM_ALU_1", alumno.Nombre1);
+            db.AddParameter("@NOM_ALU_2", alumno.Nombre2);
+            db.AddParameter("@APE_ALU_1", alumno.Apellido1);
+            db.AddParameter("@APE_ALU_2", alumno.Apellido2);
+            db.AddParameter("@TEL_ALU", alumno.Telefono);
+            db.AddParameter("@EMAIL_ALU", alumno.Email);
+            db.AddParameter("@CEL_ALU", alumno.Celular);
+            db.AddParameter("@CRED_APROB", alumno.CreditosAprobados);
+            db.AddParameter("@GENERO", alumno.Genero);
 
-                //Instanciar un "Command".
-                SqlCommand comandoUpdate = new SqlCommand(storedProcedure, conexion);
-                comandoUpdate.CommandType = CommandType.StoredProcedure;//Ejecutar un stored procedure.
+            //Utilizar la PRIMERA version del método: ExecuteNonQuery().
+           int resul= db.ExecuteNonQuery(sentenciaUpdate);
 
-                //Como el "Stored Procedure" tiene un parametro, crear y agregar los parámetros a la 
-                //propiedad "Parameters" del "Command".                 
-                comandoUpdate.Parameters.Add("@NOM_ALU_1", SqlDbType.VarChar, 50).Value = alumno.Nombre1;
-                comandoUpdate.Parameters.Add("@NOM_ALU_2", SqlDbType.VarChar, 50).Value = alumno.Nombre2;
-                comandoUpdate.Parameters.Add("@APE_ALU_1", SqlDbType.VarChar, 50).Value = alumno.Apellido1;
-                comandoUpdate.Parameters.Add("@APE_ALU_2", SqlDbType.VarChar, 50).Value = alumno.Apellido2;
-                comandoUpdate.Parameters.Add("@TEL_ALU", SqlDbType.VarChar, 10).Value = alumno.Telefono;
-                comandoUpdate.Parameters.Add("@EMAIL_ALU", SqlDbType.VarChar, 60).Value = alumno.Email;
-                comandoUpdate.Parameters.Add("@CEL_ALU", SqlDbType.VarChar, 10).Value = alumno.Celular;
-                comandoUpdate.Parameters.Add("@CRED_APROB", SqlDbType.Int, 4).Value = alumno.CreditosAprobados;
-                comandoUpdate.Parameters.Add("@GENERO", SqlDbType.Char, 1).Value = alumno.Genero;
+            //Preparar la sentencia SELECT para recuperar el último "AUTONUMERICO" que
+            //genero al base de datos al ejecutar la sentencia  "INSERT" anterior.
+            //string sentenciaSelect = "SELECT IDENT_CURRENT('Customers') " +
+            //                         "FROM Customers";
 
+            ////Ejecutar el comando y recuperar el código generado por la base de datos.
+            ////Utilizar la PRIMERA version del método: ExecuteScalar().
+            //int customerID = Convert.ToInt32(db.ExecuteScalar(sentenciaSelect));
 
-
-                //Abrir la conexion.
-                conexion.Open();
-
-                //Ejecutar el comando, y retornar el numero de registros afectados
-                //por el comando UPDATE.
-                int cantidadRegistrosAfectados = comandoUpdate.ExecuteNonQuery();
-
-                if (cantidadRegistrosAfectados > 0)
-                    return true;//Se elimino el registro.
-                else
-                    return false;//No se puedo actualizar el registro.
-            }
-            catch (SqlException excepcion)
-            {
-                //Lanzar la excepcion.
-                throw excepcion;
-            }
-            catch (Exception excepcion)
-            {
-                //Lanzar la excepcion.
-                throw excepcion;
-            }
-            finally
-            {
-                //Cerrar la conexion.
-                conexion.Close();
-                //Liberar memoria.
-                conexion.Dispose();
-            }
+           
+            return resul;
         }
 
         #endregion        
