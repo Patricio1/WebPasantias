@@ -13,7 +13,15 @@
     </asp:DetailsView>
 </p>
 <p>
-    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+    <asp:Button ID="Button1" runat="server" onclick="Button1_Click" 
+        Text="Insertar" />
+&nbsp;
+    <asp:Button ID="Button2" runat="server" Text="Actualizar" />
+&nbsp;
+    <asp:Button ID="Button3" runat="server" Text="Eliminar" />
+</p>
+    <p>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
 </p>
 <p>
 </p>

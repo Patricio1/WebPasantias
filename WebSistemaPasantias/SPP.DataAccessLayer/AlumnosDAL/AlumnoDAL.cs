@@ -72,39 +72,77 @@ namespace SPP.DataAccessLayer.AlumnoDAL
         #endregion
 
         #region Métodos de persistencia-DML
+        public int Insert(Alumno alumno)
+        {
+            DatabaseHelper db = new DatabaseHelper();
+
+            //Preparar la sentencia "INSERT".
+            string sentenciaInsert ="INSERT INTO alumnos (CED_ALU,ID_CAR,NOM_ALU_1,NOM_ALU_2,APE_ALU_1,APE_ALU_2,TEL_ALU,EMAIL_ALU,CEL_ALU,CRED_APROB,GENERO) "+
+    "VALUES (@CED_ALU, @ID_CAR, @NOM_ALU_1, @NOM_ALU_2, @APE_ALU_1,@APE_ALU_2,@TEL_ALU,@EMAIL_ALU,@CEL_ALU,@CRED_APROB,@GENERO)";
+
+            //Como el comando SQL tiene parametros, crear y agregar los parámetros a la 
+            //propiedad "Parameters" del "Command".   
+            db.AddParameter("@CED_ALU",alumno.Cedula);
+            db.AddParameter("@ID_CAR", alumno.IdCar);
+            db.AddParameter("@NOM_ALU_1", alumno.Nombre1);
+            db.AddParameter("@NOM_ALU_2", alumno.Nombre2);
+            db.AddParameter("@APE_ALU_1", alumno.Apellido1);
+            db.AddParameter("@APE_ALU_2", alumno.Apellido2);
+            db.AddParameter("@TEL_ALU", alumno.Telefono);
+            db.AddParameter("@EMAIL_ALU", alumno.Email);
+            db.AddParameter("@CEL_ALU", alumno.Celular);
+            db.AddParameter("@CRED_APROB", alumno.CreditosAprobados);
+            db.AddParameter("@GENERO", alumno.Genero);
+
+            //Utilizar la PRIMERA version del método: ExecuteNonQuery().
+            db.ExecuteNonQuery(sentenciaInsert);
+
+            //Preparar la sentencia SELECT para recuperar el último "AUTONUMERICO" que
+            //genero al base de datos al ejecutar la sentencia  "INSERT" anterior.
+            //string sentenciaSelect = "SELECT IDENT_CURRENT('Customers') " +
+            //                         "FROM Customers";
+
+            ////Ejecutar el comando y recuperar el código generado por la base de datos.
+            ////Utilizar la PRIMERA version del método: ExecuteScalar().
+            //int customerID = Convert.ToInt32(db.ExecuteScalar(sentenciaSelect));
+
+            return 1;
+        }        
+
+
 
         /// <summary>
-        /// Inserta un registro en la tabla "Customers" utilizando stored procedures.
+        /// Inserta un registro en la tabla "Alumnos" utilizando stored procedures.
         /// </summary>
         /// <param name="alumno">Objeto de negocio para pasar datos</param>
         /// <returns>Un entero con el autonumerico generado por la BD</returns>
-        //public int Insert(Alumno alumno, string storedProcedure)
-        //{
-        //    DatabaseHelper db = new DatabaseHelper();
+        public int Insert(Alumno alumno, string storedProcedure)
+        {
+            DatabaseHelper db = new DatabaseHelper();
 
-        //    //Como el STORED PROCEDURE tiene parametros, crear y agregar los parámetros a la 
-        //    //propiedad "Parameters" del "Command".   
-        //    db.AddParameter("@CED_ALU", alumno.Cedula);
-        //    db.AddParameter("@ID_CAR", alumno.IdCar);
-        //    db.AddParameter("@NOM_ALU_1", alumno.Nombre1);
-        //    db.AddParameter("@NOM_ALU_2", alumno.Nombre2);
-        //    db.AddParameter("@APE_ALU_1", alumno.Apellido1);
-        //    db.AddParameter("@APE_ALU_2", alumno.Apellido2);
-        //    db.AddParameter("@TEL_ALU", alumno.Telefono);
-        //    db.AddParameter("@EMAIL_ALU", alumno.Email);
-        //    db.AddParameter("@CEL_ALU", alumno.Celular);
-        //    db.AddParameter("@CRED_APROB", alumno.CreditosAprobados);
-        //    db.AddParameter("@GENERO", alumno.Genero);
+            //Como el STORED PROCEDURE tiene parametros, crear y agregar los parámetros a la 
+            //propiedad "Parameters" del "Command".   
+            db.AddParameter("@CED_ALU", alumno.Cedula);
+            db.AddParameter("@ID_CAR", alumno.IdCar);
+            db.AddParameter("@NOM_ALU_1", alumno.Nombre1);
+            db.AddParameter("@NOM_ALU_2", alumno.Nombre2);
+            db.AddParameter("@APE_ALU_1", alumno.Apellido1);
+            db.AddParameter("@APE_ALU_2", alumno.Apellido2);
+            db.AddParameter("@TEL_ALU", alumno.Telefono);
+            db.AddParameter("@EMAIL_ALU", alumno.Email);
+            db.AddParameter("@CEL_ALU", alumno.Celular);
+            db.AddParameter("@CRED_APROB", alumno.CreditosAprobados);
+            db.AddParameter("@GENERO", alumno.Genero);
 
-        //    //Utilizar la TERCERA version del método: ExecuteNonQuery().
-        //    int i = db.ExecuteNonQuery(storedProcedure, CommandType.StoredProcedure);
+            //Utilizar la TERCERA version del método: ExecuteNonQuery().
+            int i = db.ExecuteNonQuery(storedProcedure, CommandType.StoredProcedure);
 
-        //    //Ejecutar el comando y recuperar el código generado por la base de datos.
-        //    //Utilizar la TERCERA version del método: ExecuteScalar().
-        //    int customerID = Convert.ToInt32(db.ExecuteScalar("p_select_customers_autonumerico", CommandType.StoredProcedure));
-
-        //    return customerID;
-        //}
+            //Ejecutar el comando y recuperar el código generado por la base de datos.
+            //Utilizar la TERCERA version del método: ExecuteScalar().
+           // int customerID = Convert.ToInt32(db.ExecuteScalar("p_select_customers_autonumerico", CommandType.StoredProcedure));
+         
+            return i;
+        }
 
         #endregion
 
@@ -113,12 +151,12 @@ namespace SPP.DataAccessLayer.AlumnoDAL
 
 
         /// <summary>
-        /// Elimina un registro en la tabla "Customers" utilizando un stored procedure.
+        /// Elimina un registro en la tabla "Alumnos" utilizando un stored procedure.
         /// </summary>
-        /// <param name="customerID">Clave primaria del registro a eliminar</param>
+        /// <param name="CED_ALU">Clave primaria del registro a eliminar</param>
         /// <param name="storedProcedure">Nombre del stored procedure</param>
         /// <returns>true si se elimina, false caso contrario</returns>
-        public bool Delete(int customerID, string storedProcedure)
+        public bool Delete(int CedulaAlumno, string storedProcedure)
         {
             //Instanciar un "Connection".
             SqlConnection conexion = new SqlConnection();
@@ -134,7 +172,7 @@ namespace SPP.DataAccessLayer.AlumnoDAL
 
                 //Como el "Stored Procedure" tiene un parametro, crear y agregar el parámetro a la 
                 //propiedad "Parameters" del "Command".                
-                comandoDelete.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customerID;
+                comandoDelete.Parameters.Add("@CED_ALU", SqlDbType.VarChar, 10).Value = CedulaAlumno;
 
 
                 //Abrir la conexion.
@@ -170,66 +208,70 @@ namespace SPP.DataAccessLayer.AlumnoDAL
 
 
         /// <summary>
-        /// Actualiza un registro en la tabla "Customers" utilizando un stored procedure.
+        /// Actualiza un registro en la tabla "Alumnos" utilizando un stored procedure.
         /// </summary>
-        /// <param name="customer">Objeto de negocio para pasar datos</param>
+        /// <param name="alumnos">Objeto de negocio para pasar datos</param>
         /// <param name="storedProcedure">Nombre del stored procedure</param>
         /// <returns>true si se actualiza, false caso contrario</returns>
-        //public bool Update(Alumno customer, string storedProcedure)
-        //{
-        //    ////Instanciar un "Connection".
-        //    //SqlConnection conexion = new SqlConnection();
+        public bool Update(Alumno alumno, string storedProcedure)
+        {
+            //Instanciar un "Connection".
+            SqlConnection conexion = new SqlConnection();
 
-        //    //try
-        //    //{
-        //    //    //Crear y configurar el "Connection".
-        //    //    conexion.ConnectionString = ConectarBaseDatos.CadenaConexion;
-
-
-        //    //    //Instanciar un "Command".
-        //    //    SqlCommand comandoUpdate = new SqlCommand(storedProcedure, conexion);
-        //    //    comandoUpdate.CommandType = CommandType.StoredProcedure;//Ejecutar un stored procedure.
-
-        //    //    //Como el "Stored Procedure" tiene un parametro, crear y agregar los parámetros a la 
-        //    //    //propiedad "Parameters" del "Command".                 
-        //    //    comandoUpdate.Parameters.Add("@Name", SqlDbType.VarChar, 100).Value = customer.Name;
-        //    //    comandoUpdate.Parameters.Add("@Address", SqlDbType.VarChar, 50).Value = customer.Address;
-        //    //    comandoUpdate.Parameters.Add("@City", SqlDbType.VarChar, 20).Value = customer.City;
-        //    //    comandoUpdate.Parameters.Add("@State", SqlDbType.Char, 2).Value = customer.State;
-        //    //    comandoUpdate.Parameters.Add("@ZipCode", SqlDbType.Char, 15).Value = customer.ZipCode;
-        //    //    comandoUpdate.Parameters.Add("@CustomerID", SqlDbType.Int, 4).Value = customer.CustomerID;
+            try
+            {
+                //Crear y configurar el "Connection".
+                conexion.ConnectionString = ConectarBaseDatos.CadenaConexion;
 
 
-        //    //    //Abrir la conexion.
-        //    //    conexion.Open();
+                //Instanciar un "Command".
+                SqlCommand comandoUpdate = new SqlCommand(storedProcedure, conexion);
+                comandoUpdate.CommandType = CommandType.StoredProcedure;//Ejecutar un stored procedure.
 
-        //    //    //Ejecutar el comando, y retornar el numero de registros afectados
-        //    //    //por el comando UPDATE.
-        //    //    int cantidadRegistrosAfectados = comandoUpdate.ExecuteNonQuery();
+                //Como el "Stored Procedure" tiene un parametro, crear y agregar los parámetros a la 
+                //propiedad "Parameters" del "Command".                 
+                comandoUpdate.Parameters.Add("@NOM_ALU_1", SqlDbType.VarChar, 50).Value = alumno.Nombre1;
+                comandoUpdate.Parameters.Add("@NOM_ALU_2", SqlDbType.VarChar, 50).Value = alumno.Nombre2;
+                comandoUpdate.Parameters.Add("@APE_ALU_1", SqlDbType.VarChar, 50).Value = alumno.Apellido1;
+                comandoUpdate.Parameters.Add("@APE_ALU_2", SqlDbType.VarChar, 50).Value = alumno.Apellido2;
+                comandoUpdate.Parameters.Add("@TEL_ALU", SqlDbType.VarChar, 10).Value = alumno.Telefono;
+                comandoUpdate.Parameters.Add("@EMAIL_ALU", SqlDbType.VarChar, 60).Value = alumno.Email;
+                comandoUpdate.Parameters.Add("@CEL_ALU", SqlDbType.VarChar, 10).Value = alumno.Celular;
+                comandoUpdate.Parameters.Add("@CRED_APROB", SqlDbType.Int, 4).Value = alumno.CreditosAprobados;
+                comandoUpdate.Parameters.Add("@GENERO", SqlDbType.Char, 1).Value = alumno.Genero;
 
-        //    //    if (cantidadRegistrosAfectados > 0)
-        //    //        return true;//Se elimino el registro.
-        //    //    else
-        //            return false;//No se puedo actualizar el registro.
-        //    //}
-        //    //catch (SqlException excepcion)
-        //    //{
-        //    //    //Lanzar la excepcion.
-        //    //    throw excepcion;
-        //    //}
-        //    //catch (Exception excepcion)
-        //    //{
-        //    //    //Lanzar la excepcion.
-        //    //    throw excepcion;
-        //    //}
-        //    //finally
-        //    //{
-        //    //    //Cerrar la conexion.
-        //    //    conexion.Close();
-        //    //    //Liberar memoria.
-        //    //    conexion.Dispose();
-        //    //}
-        //}
+
+
+                //Abrir la conexion.
+                conexion.Open();
+
+                //Ejecutar el comando, y retornar el numero de registros afectados
+                //por el comando UPDATE.
+                int cantidadRegistrosAfectados = comandoUpdate.ExecuteNonQuery();
+
+                if (cantidadRegistrosAfectados > 0)
+                    return true;//Se elimino el registro.
+                else
+                    return false;//No se puedo actualizar el registro.
+            }
+            catch (SqlException excepcion)
+            {
+                //Lanzar la excepcion.
+                throw excepcion;
+            }
+            catch (Exception excepcion)
+            {
+                //Lanzar la excepcion.
+                throw excepcion;
+            }
+            finally
+            {
+                //Cerrar la conexion.
+                conexion.Close();
+                //Liberar memoria.
+                conexion.Dispose();
+            }
+        }
 
         #endregion        
     }

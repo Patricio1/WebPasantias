@@ -8,7 +8,7 @@ namespace SPP.BusinessObjects
     /// <summary>
     /// Objeto o clase de negocio que presenta una tupla de la tabla: Alumno.
     /// </summary>
-    class Alumno
+   public class Alumno
     {
         #region Propiedades automáticas
 
