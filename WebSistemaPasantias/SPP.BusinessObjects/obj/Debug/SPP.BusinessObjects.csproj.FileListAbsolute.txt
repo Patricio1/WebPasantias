@@ -1,0 +1,12 @@
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\SPP.BusinessObjects\bin\Debug\SPP.BusinessObjects.dll
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\SPP.BusinessObjects\bin\Debug\SPP.BusinessObjects.pdb
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\SPP.BusinessObjects\obj\Debug\SPP.BusinessObjects.dll
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\WebSistemaPasantias\SPP.BusinessObjects\obj\Debug\SPP.BusinessObjects.pdb
+C:\Users\acer\Desktop\SPP.BusinessObjects\bin\Debug\SPP.BusinessObjects.dll
+C:\Users\acer\Desktop\SPP.BusinessObjects\bin\Debug\SPP.BusinessObjects.pdb
+C:\Users\acer\Desktop\SPP.BusinessObjects\obj\Debug\SPP.BusinessObjects.dll
+C:\Users\acer\Desktop\SPP.BusinessObjects\obj\Debug\SPP.BusinessObjects.pdb
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.BusinessObjects\bin\Debug\SPP.BusinessObjects.dll
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.BusinessObjects\bin\Debug\SPP.BusinessObjects.pdb
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.BusinessObjects\obj\Debug\SPP.BusinessObjects.dll
+C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.BusinessObjects\obj\Debug\SPP.BusinessObjects.pdb
