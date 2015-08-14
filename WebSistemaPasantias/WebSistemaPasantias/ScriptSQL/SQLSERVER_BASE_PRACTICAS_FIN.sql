@@ -1571,3 +1571,29 @@ alter table VISITA
       references PARAM_VISITA (ID_PARAM)
 go
 
+
+
+-- ===================================================================================================================
+-- Author:		<FISEI, SISTEMAS>
+-- Create date: <04/01/2011>
+-- Description:	<Selecciona el registro de la tabla alumnos
+-- ===================================================================================================================
+
+CREATE PROCEDURE p_select_alumnos_por_primarykey(@CED_ALU varchar(10))
+AS
+BEGIN	
+	SELECT * from ALUMNOS
+	WHERE CED_ALU = @CED_ALU
+END
+
+GO
+
+
+CREATE PROCEDURE p_select_alumnos
+AS
+BEGIN	
+	SELECT * from ALUMNOS
+	
+END
+
+GO
