@@ -6,3 +6,10 @@ C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.Da
 C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\obj\Debug\SPP.DataAccessLayer.csprojResolveAssemblyReference.cache
 C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\obj\Debug\SPP.DataAccessLayer.dll
 C:\Users\acer\Desktop\FinalDesarrolloIII\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\obj\Debug\SPP.DataAccessLayer.pdb
+C:\Users\jaimepc\Desktop\desarrollo3\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\bin\Debug\SPP.DataAccessLayer.dll
+C:\Users\jaimepc\Desktop\desarrollo3\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\bin\Debug\SPP.DataAccessLayer.pdb
+C:\Users\jaimepc\Desktop\desarrollo3\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\bin\Debug\SPP.BusinessObjects.dll
+C:\Users\jaimepc\Desktop\desarrollo3\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\bin\Debug\SPP.BusinessObjects.pdb
+C:\Users\jaimepc\Desktop\desarrollo3\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\obj\Debug\SPP.DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\jaimepc\Desktop\desarrollo3\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\obj\Debug\SPP.DataAccessLayer.dll
+C:\Users\jaimepc\Desktop\desarrollo3\WebPasantias\WebSistemaPasantias\SPP.DataAccessLayer\obj\Debug\SPP.DataAccessLayer.pdb

@@ -48,6 +48,7 @@
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="Excepciones.cs" />
+    <Compile Include="PracticasDAL\FuncionPerfilDAL.cs" />
     <Compile Include="PracticasDAL\TipoPracticaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
